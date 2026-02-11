@@ -7,14 +7,7 @@
 
     @include('theme.partisal.header')
 
-    <main class="site-main">
-
-        @include('theme.partisal.hero')
-
-
-        @yield('content')
-    </main>
-
+    @yield('content')
 
     @include('theme.partisal.footer')
 

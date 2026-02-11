@@ -1,8 +1,12 @@
 @extends('theme.master')
+@section('title' , 'index')
+@section('home-active'  , 'active')
 
 @section('content')
+    <main class="site-main">
+        @include('theme.partisal.hero')
 
-        <!--================ Blog slider start =================-->
+                <!--================ Blog slider start =================-->
         <section>
             <div class="container">
                 <div class="owl-carousel owl-theme blog-slider">
@@ -201,5 +205,6 @@
                 </div>
         </section>
         <!--================ End Blog Post Area =================-->
+    </main>
 
 @endsection
