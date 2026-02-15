@@ -3,14 +3,26 @@
                         <div class="widget-wrap">
                             <div class="single-sidebar-widget newsletter-widget">
                                 <h4 class="single-sidebar-widget__title">Newsletter</h4>
-                                <div class="form-group mt-30">
-                                    <div class="col-autos">
-                                        <input type="text" class="form-control" id="inlineFormInputGroup"
-                                            placeholder="Enter email" onfocus="this.placeholder = ''"
-                                            onblur="this.placeholder = 'Enter email'">
+                                @if (session('status'))
+                                    <div class="alert alert-success">
+                                        {{ session('status') }}
                                     </div>
-                                </div>
-                                <button class="bbtns d-block mt-20 w-100">Subcribe</button>
+                                @endif
+                                <form action="{{ route('subscriber.store') }}" method="POST">
+                                    @csrf
+                                    <div class="form-group mt-30">
+                                        <div class="col-autos">
+                                            <input name="email" type="text" class="form-control"
+                                                id="inlineFormInputGroup" value="{{ old('email') }}" placeholder="Enter email"
+                                                onfocus="this.placeholder = ''"
+                                                onblur="this.placeholder = 'Enter email'">
+                                                @error('email')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="bbtns d-block mt-20 w-100">Subcribe</button>
+                                </form>
                             </div>
 
                             <div class="single-sidebar-widget post-category-widget">
@@ -54,8 +66,8 @@
                                 <div class="popular-post-list">
                                     <div class="single-post-list">
                                         <div class="thumb">
-                                            <img class="card-img rounded-0" src="{{asset('assets')}}/img/blog/thumb/thumb1.png"
-                                                alt="">
+                                            <img class="card-img rounded-0"
+                                                src="{{ asset('assets') }}/img/blog/thumb/thumb1.png" alt="">
                                             <ul class="thumb-info">
                                                 <li><a href="#">Adam Colinge</a></li>
                                                 <li><a href="#">Dec 15</a></li>
@@ -69,8 +81,8 @@
                                     </div>
                                     <div class="single-post-list">
                                         <div class="thumb">
-                                            <img class="card-img rounded-0" src="{{asset('assets')}}/img/blog/thumb/thumb2.png"
-                                                alt="">
+                                            <img class="card-img rounded-0"
+                                                src="{{ asset('assets') }}/img/blog/thumb/thumb2.png" alt="">
                                             <ul class="thumb-info">
                                                 <li><a href="#">Adam Colinge</a></li>
                                                 <li><a href="#">Dec 15</a></li>
@@ -85,8 +97,8 @@
                                     </div>
                                     <div class="single-post-list">
                                         <div class="thumb">
-                                            <img class="card-img rounded-0" src="{{asset('assets')}}/img/blog/thumb/thumb3.png"
-                                                alt="">
+                                            <img class="card-img rounded-0"
+                                                src="{{ asset('assets') }}/img/blog/thumb/thumb3.png" alt="">
                                             <ul class="thumb-info">
                                                 <li><a href="#">Adam Colinge</a></li>
                                                 <li><a href="#">Dec 15</a></li>

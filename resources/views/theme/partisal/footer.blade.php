@@ -16,30 +16,27 @@
                     <div class="single-footer-widget">
                         <h6>Newsletter</h6>
                         <p>Stay update with our latest</p>
-                        <div class="" id="mc_embed_signup">
+                        <div>
+                            @if (session('status'))
+                                <div class="alert alert-success">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
 
-                            <form target="_blank" novalidate="true"
-                                action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                method="get" class="form-inline">
-
+                            <form action="{{ route('subscriber.store') }}" method="POST" class="form-inline">
+                                @csrf
                                 <div class="d-flex flex-row">
 
-                                    <input class="form-control" name="EMAIL" placeholder="Enter Email"
+                                    <input class="form-control" name="email" placeholder="Enter Email"
                                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
-                                        required="" type="email">
-
-
+                                        value="{{ old('email') }}" type="text">
                                     <button class="click-btn btn btn-default"><span
                                             class="lnr lnr-arrow-right"></span></button>
-                                    <div style="position: absolute; left: -5000px;">
-                                        <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1"
-                                            value="" type="text">
-                                    </div>
 
-                                    <!-- <div class="col-lg-4 col-md-4">
-                        <button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
-                      </div>  -->
                                 </div>
+                                @error('email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                                 <div class="info"></div>
                             </form>
                         </div>
@@ -49,14 +46,14 @@
                     <div class="single-footer-widget mail-chimp">
                         <h6 class="mb-20">Instragram Feed</h6>
                         <ul class="instafeed d-flex flex-wrap">
-                            <li><img src="{{asset('assets')}}/img/instagram/i1.jpg" alt=""></li>
-                            <li><img src="{{asset('assets')}}/img/instagram/i2.jpg" alt=""></li>
-                            <li><img src="{{asset('assets')}}/img/instagram/i3.jpg" alt=""></li>
-                            <li><img src="{{asset('assets')}}/img/instagram/i4.jpg" alt=""></li>
-                            <li><img src="{{asset('assets')}}/img/instagram/i5.jpg" alt=""></li>
-                            <li><img src="{{asset('assets')}}/img/instagram/i6.jpg" alt=""></li>
-                            <li><img src="{{asset('assets')}}/img/instagram/i7.jpg" alt=""></li>
-                            <li><img src="{{asset('assets')}}/img/instagram/i8.jpg" alt=""></li>
+                            <li><img src="{{ asset('assets') }}/img/instagram/i1.jpg" alt=""></li>
+                            <li><img src="{{ asset('assets') }}/img/instagram/i2.jpg" alt=""></li>
+                            <li><img src="{{ asset('assets') }}/img/instagram/i3.jpg" alt=""></li>
+                            <li><img src="{{ asset('assets') }}/img/instagram/i4.jpg" alt=""></li>
+                            <li><img src="{{ asset('assets') }}/img/instagram/i5.jpg" alt=""></li>
+                            <li><img src="{{ asset('assets') }}/img/instagram/i6.jpg" alt=""></li>
+                            <li><img src="{{ asset('assets') }}/img/instagram/i7.jpg" alt=""></li>
+                            <li><img src="{{ asset('assets') }}/img/instagram/i8.jpg" alt=""></li>
                         </ul>
                     </div>
                 </div>
