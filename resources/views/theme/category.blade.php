@@ -1,14 +1,12 @@
 @extends('theme.master')
-@section('title' , 'category')
-@section('categories-active' , 'active')
+@section('title', 'category')
+@section('categories-active', 'active')
 
 @section('content')
-@include('theme.partisal.hero' , 
-[
-    'title' => 'Category',
-    'title1' => 'Category us',
-]
-)
+    @include('theme.partisal.hero', [
+        'title' => 'Category',
+        'title1' => 'Category us',
+    ])
 
 
 
@@ -21,8 +19,8 @@
                         <div class="col-md-6">
                             <div class="single-recent-blog-post card-view">
                                 <div class="thumb">
-                                    <img class="card-img rounded-0"
-                                        src="{{ asset('assets') }}/img/blog/thumb/thumb-card1.png" alt="">
+                                    <img class="card-img rounded-0" src="{{ asset('assets') }}/img/blog/thumb/thumb-card1.png"
+                                        alt="">
                                     <ul class="thumb-info">
                                         <li><a href="#"><i class="ti-user"></i>Admin</a></li>
                                         <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
