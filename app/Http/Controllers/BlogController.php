@@ -5,9 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
+
+
+
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['create']);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -21,8 +29,11 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $categories = Category::get();
-        return view('theme.blogs.create' , compact('categories'));
+        // if (Auth::check()) {
+        //     }
+        //     abort(403);
+            $categories = Category::get();
+            return view('theme.blogs.create' , compact('categories'));
     }
 
     /**
