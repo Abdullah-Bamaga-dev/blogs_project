@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBlogRequest;
 use App\Models\Blog;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -39,9 +40,24 @@ class BlogController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreBlogRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        //image uploading 
+        // get image 
+        $image = $request->image;
+        // change it`s current name
+        $newImageName = time().'-'.$image->getClientOriginalName();
+        // move image to my project
+        $image->storeAs('blogs' , $newImageName , 'public');
+        // save new name to database record
+        $data['image'] = $newImageName;
+        $data['user_id'] = Auth::user()->id;
+
+        Blog::create($data);
+
+        return back()->with('BlogCreateStatus' , 'your blog created successfully');
     }
 
     /**

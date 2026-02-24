@@ -12,6 +12,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
+                    @if (session('BlogCreateStatus'))
+                        <div class="alert alert-success">
+                            {{ session('BlogCreateStatus') }}
+                        </div>
+                    @endif
                     <form action="{{ route('blogs.store') }}" class="form-contact contact_form" method="post"
                         novalidate="novalidate" enctype="multipart/form-data">
                         @csrf
@@ -53,8 +58,25 @@
                 </div>
             </div>
         </div>
+    <script>
+        let inputImage = document.getElementById('customImage');
+    
+        let label = document.querySelector('label[for="customImage"]');
+    
+        inputImage.addEventListener('change', function(e) {
+    
+            if (e.target.files.length > 0) {
+                let fileName = e.target.files[0].name;
+    
+                label.innerText = '📁 ' + fileName;
+    
+                label.style.color = '#333';
+            }
+        });
+    </script>
     </section>
     <!-- ================ contact section end ================= -->
 
-
 @endsection
+
+
