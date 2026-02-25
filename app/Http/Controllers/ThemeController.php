@@ -24,7 +24,7 @@ class ThemeController extends Controller
     }
 
     public function singleblog() {
-        return view('theme.singleblog');
+        
     }
 
     public function register() {
