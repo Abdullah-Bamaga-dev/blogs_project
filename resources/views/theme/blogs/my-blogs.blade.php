@@ -26,7 +26,12 @@
                                             <a href="{{ route('blogs.show', ['blog' => $blog]) }}"
                                                 target="_blank">{{ $blog->name }}</a>
                                         </td>
-                                        <td></td>
+                                        <td> <a href="{{ route('blogs.edit' , ['blog' => $blog]) }}"
+                                                class="btn btn-sm btn-primary mr-2">Edit</a>
+                                            <a href="{{ route('blogs.create') }}"
+                                                class="btn btn-sm btn-danger mr-2">Delete</a>
+                                        </td>
+
                                     </tr>
                                 @endforeach
 
@@ -34,7 +39,7 @@
                         </tbody>
                     </table>
                     @if (count($blogs) > 0)
-                        {{ $blogs->render("pagination::bootstrap-4") }}
+                        {{ $blogs->render('pagination::bootstrap-4') }}
                     @endif
                 </div>
             </div>

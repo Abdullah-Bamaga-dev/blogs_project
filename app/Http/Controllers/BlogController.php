@@ -15,7 +15,7 @@ class BlogController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->only(['create' , 'myBlogs']);
+        $this->middleware('auth')->only(['create' , 'myBlogs' , 'store' , 'edit' , 'update']);
     }
     /**
      * Display a listing of the resource.
@@ -73,7 +73,12 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        if ($blog->user_id !== Auth::user()->id) {
+            abort(403, 'Unauthorized action.');
+        }
+
+            $categories = Category::get();
+            return view('theme.blogs.edit' , compact('categories' , 'blog'));
     }
 
     /**
@@ -81,7 +86,7 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        //
+        
     }
 
     /**
