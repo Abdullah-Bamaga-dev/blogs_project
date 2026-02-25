@@ -11,16 +11,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    @if (session('BlogEditStatus'))
+                    @if (session('BlogUpdateStatus'))
                         <div class="alert alert-success">
-                            {{ session('BlogEditStatus') }}
+                            {{ session('BlogUpdateStatus') }}
                         </div>
                     @endif
                     <form action="{{ route('blogs.update' , ['blog' => $blog]) }}" class="form-contact contact_form" method="post"
                         novalidate="novalidate" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        
+
                         <div class="form-group">
                             <input class="form-control border" name="name" type="text" placeholder="Enter your name"
                                 value="{{ $blog->name }}">
