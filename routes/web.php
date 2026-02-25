@@ -28,18 +28,23 @@ Route::controller(ThemeController::class)->name('theme.')->group(function () {
     // Route::get('/login' , 'login')->name('login');
 });
 
+
 // SUBSCRIBER STORE ROUTE
 Route::post('/subscriber/store' , [SubscriberController::class , 'store'])->name('subscriber.store');
+
 
 // CONTACT STORE ROUTE
 Route::post('/contact/store' , [ContactController::class , 'store'])->name('contact.store');
 
-// BLOG ROUTE
+
+// BLOG 
+Route::get('/my-blogs' , [BlogController::class , 'myBlogs'])->name('blogs.my-blogs');
 Route::resource('blogs' , BlogController::class);
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

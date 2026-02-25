@@ -15,7 +15,7 @@ class BlogController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->only(['create']);
+        $this->middleware('auth')->only(['create' , 'myBlogs']);
     }
     /**
      * Display a listing of the resource.
@@ -90,5 +90,11 @@ class BlogController extends Controller
     public function destroy(Blog $blog)
     {
         //
+    }
+
+    // display all user blogs
+    public function myBlogs() {
+            $blogs = Blog::where('user_id' , Auth::user()->id)->paginate(10);
+            return view('theme.blogs.my-blogs' , compact('blogs'));
     }
 }
