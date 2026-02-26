@@ -42,21 +42,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3  col-md-6 col-sm-6">
-                    <div class="single-footer-widget mail-chimp">
-                        <h6 class="mb-20">Instragram Feed</h6>
-                        <ul class="instafeed d-flex flex-wrap">
-                            <li><img src="{{ asset('assets') }}/img/instagram/i1.jpg" alt=""></li>
-                            <li><img src="{{ asset('assets') }}/img/instagram/i2.jpg" alt=""></li>
-                            <li><img src="{{ asset('assets') }}/img/instagram/i3.jpg" alt=""></li>
-                            <li><img src="{{ asset('assets') }}/img/instagram/i4.jpg" alt=""></li>
-                            <li><img src="{{ asset('assets') }}/img/instagram/i5.jpg" alt=""></li>
-                            <li><img src="{{ asset('assets') }}/img/instagram/i6.jpg" alt=""></li>
-                            <li><img src="{{ asset('assets') }}/img/instagram/i7.jpg" alt=""></li>
-                            <li><img src="{{ asset('assets') }}/img/instagram/i8.jpg" alt=""></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="col-lg-2 col-md-6 col-sm-6">
                     <div class="single-footer-widget">
                         <h6>Follow Us</h6>
