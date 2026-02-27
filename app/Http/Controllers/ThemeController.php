@@ -9,9 +9,10 @@ use Illuminate\Http\Request;
 class ThemeController extends Controller
 {
     public function index() {
+        $latestBlog = Blog::latest()->first();
         $blogs = Blog::with('user')->latest()->paginate(4);
         $slideBlogs = Blog::latest()->take(5)->get();
-        return view('theme.index' , compact('blogs' , 'slideBlogs'));
+        return view('theme.index' , compact('blogs' , 'slideBlogs' , 'latestBlog'));
     }
 
     public function category($id) {

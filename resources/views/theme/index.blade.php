@@ -5,17 +5,20 @@
 @section('content')
     <main class="site-main">
         <!--================Hero Banner start =================-->
-        <section class="mb-30px">
-            <div class="container">
-                <div class="hero-banner">
-                    <div class="hero-banner__content">
-                        <h3>Tours & Travels</h3>
-                        <h1>Amazing Places on earth</h1>
-                        <h4>December 12, 2018</h4>
+        @if ($latestBlog)
+            <section class="mb-30px">
+                <div class="container">
+                    <div class="hero-banner"
+                        style="background-image: url('{{ asset('storage/blogs/' . $latestBlog->image) }}'); background-size: cover; background-position: center;">
+                        <div class="hero-banner__content">
+                            <h3>{{ $latestBlog->category->name }}</h3>
+                            <h1>{{ $latestBlog->title }}</h1>
+                            <h4>{{ $latestBlog->created_at->format('F d, Y') }}</h4>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        @endif
         <!--================Hero Banner end =================-->
 
         <!--================ Blog slider start =================-->
@@ -30,8 +33,9 @@
                                         alt="">
                                 </div>
                                 <div class="blog__slide__content">
-                                    <a class="blog__slide__label" href="{{ route('theme.category' , ['id' => $blog->category->id]) }}">{{ $blog->category->name }}</a>
-                                    <h3><a href="{{ route('blogs.show' , ['blog' => $blog]) }}">{{ $blog->name }}</a></h3>
+                                    <a class="blog__slide__label"
+                                        href="{{ route('theme.category', ['id' => $blog->category->id]) }}">{{ $blog->category->name }}</a>
+                                    <h3><a href="{{ route('blogs.show', ['blog' => $blog]) }}">{{ $blog->name }}</a></h3>
                                     <p>{{ $blog->created_at->format('d M Y') }}</p>
                                 </div>
                             </div>
@@ -58,7 +62,9 @@
                                             <li><a href="#"><i
                                                         class="ti-notepad"></i>{{ $blog->created_at->format('D M Y') }}</a>
                                             </li>
-                                            <li><a href="#"><i class="ti-themify-favicon"></i>{{ count($blog->comments) }} Comments</a></li>
+                                            <li><a href="#"><i
+                                                        class="ti-themify-favicon"></i>{{ count($blog->comments) }}
+                                                    Comments</a></li>
                                         </ul>
                                     </div>
                                     <div class="details mt-20">
