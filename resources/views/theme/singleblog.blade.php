@@ -54,10 +54,10 @@
                                     </div>
                                 </div>
                             @endforeach
+                        </div>
                     @endif
 
 
-                </div>
 
                 <div class="comment-form">
                     <h4>Leave a Reply</h4>
