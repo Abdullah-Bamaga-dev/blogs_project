@@ -73,6 +73,11 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('blogs.my-blogs') }}">My Blogs</a>
                                     </li>
+                                    @if (Auth::user()->role === 'admin')
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('admin.dashboard') }}">My Dashboard</a>
+                                        </li>
+                                    @endif
                                     <li class="nav-item">
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                             style="display: none;">
