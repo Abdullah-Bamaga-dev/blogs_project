@@ -1,17 +1,28 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            لوحة تحكم الإدارة (Admin Dashboard)
-        </h2>
-    </x-slot>
+@extends('admin.layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 font-bold text-center text-xl">
-                    🎉 مرحباً بك يا مدير النظام! أنت الآن في الغرفة المحمية. 🕵️‍♂️
-                </div>
-            </div>
+@section('content')
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h3 class="font-weight-bold text-secondary">Admin Dashboard</h3>
+            <p class="text-muted">Welcome back , <strong>{{ Auth::user()->name }}</strong> , manage your system from here.</p>
         </div>
     </div>
-</x-app-layout>
+
+    <div class="row">
+        <div class="col-md-4">
+            <a href="{{ route('admin.users') }}" class="text-decoration-none">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="card-title text-secondary mb-1">Users</h5>
+                            <h2 class="font-weight-bold text-dark mb-0">{{ $usersCount }}</h2>
+                        </div>
+                        <div>
+                            <span style="font-size: 2rem;">👥</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+@endsection
