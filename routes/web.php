@@ -61,9 +61,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// ROUTE ADMIN PANEL
 Route::middleware(['auth' , 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard' , [AdminController::class , 'index'])->name('dashboard');
     Route::get('/users' , [AdminController::class , 'users'])->name('users');
+    Route::delete('/users/{user}' , [AdminController::class , 'destroy'])->name('destroy');
 });
 
 require __DIR__.'/auth.php';

@@ -14,6 +14,16 @@
             + Add New User
         </a>
     </div>
+    @if (session('UserDeleteStatus'))
+        <div class="alert alert-success">
+            {{ session('UserDeleteStatus') }}
+        </div>
+    @endif
+    @if (session('ErrorDeleteAdmin'))
+        <div class="alert alert-danger">
+            {{ session('ErrorDeleteAdmin') }}
+        </div>
+    @endif
 
     <div class="card shadow-sm border-0">
         <div class="card-body p-0">
@@ -40,11 +50,12 @@
                             </td>
                             <td class="align-middle">
                                 <a href="#" class="btn btn-sm btn-info">Edit</a>
-                                <form action="#" method="POST" class="d-inline">
+                                <form action="{{ route('admin.destroy', ['user' => $user]) }}" method="POST"
+                                    class="d-inline" id="delete_form_{{ $user->id }}">
+                                    @method('delete')
                                     @csrf
-                                    @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger"
-                                        onclick="return confirm('Are you sure?')">Delete</button>
+                                        onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
                                 </form>
                             </td>
                         </tr>

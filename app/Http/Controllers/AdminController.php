@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth' && 'admin')->only('destroy');
-    // }
     public function index() {
         $usersCount = User::count();
         return view('admin.dashboard' , compact('usersCount'));
@@ -22,10 +18,14 @@ class AdminController extends Controller
         return view('admin.users' , compact('users'));
     }
 
-    // public function destroy(User $id) {
-    //     if (Auth::check() && Auth::user()->role === 'admin') {
-    //         $id->delete();
+    public function destroy(User $user) {
 
-    //     }
-    // }
+        if (auth()->id() === $user->id) {
+        return back()->with('ErrorDeleteAdmin', 'You cannot delete yourself!');
+        }
+
+        $user->delete();
+        return back()->with('UserDeleteStatus', 'User deleted successfully.');
+        
+    }
 }
