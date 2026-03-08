@@ -62,10 +62,22 @@ Route::middleware('auth')->group(function () {
 });
 
 // ROUTE ADMIN PANEL
-Route::middleware(['auth' , 'admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard' , [AdminController::class , 'index'])->name('dashboard');
-    Route::get('/users' , [AdminController::class , 'users'])->name('users');
-    Route::delete('/users/{user}' , [AdminController::class , 'destroy'])->name('destroy');
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    
+    Route::get('/users/create', [AdminController::class, 'create'])->name('users.create');
+
+    Route::post('/users', [AdminController::class, 'store'])->name('users.store');
+    
+    Route::get('/users', [AdminController::class, 'users'])->name('users.index');
+    
+    Route::delete('/users/{user}', [AdminController::class, 'destroy'])->name('users.destroy');
+    
+    Route::get('/users/{user}/edit', [AdminController::class, 'edit'])->name('users.edit');
+    
+    Route::put('/users/{user}', [AdminController::class, 'update'])->name('users.update');
+    
 });
 
 require __DIR__.'/auth.php';

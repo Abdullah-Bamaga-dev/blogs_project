@@ -10,7 +10,7 @@
 
     <div class="row">
         <div class="col-md-4">
-            <a href="{{ route('admin.users') }}" class="text-decoration-none">
+            <a href="{{ route('admin.users.index') }}" class="text-decoration-none">
                 <div class="card shadow-sm border-0">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <div>
